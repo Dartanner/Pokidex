@@ -56,9 +56,9 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-            <Grid IsVisible="{Binding isLoading}" BackgroundColor="DarkSlateGrey">
+            <!--<Grid IsVisible="{Binding isLoading}" BackgroundColor="DarkSlateGrey">
                 <ActivityIndicator IsRunning="True" Color="Aqua"/>
-            </Grid>
+            </Grid>-->
         </Grid>
     </Grid>
 
