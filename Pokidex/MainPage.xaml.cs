@@ -1,4 +1,6 @@
-﻿namespace Pokidex
+﻿using PokeApiNet;
+
+namespace Pokidex
 {
     public partial class MainPage : ContentPage
     {
@@ -9,6 +11,7 @@
             InitializeComponent();
         }
 
+        
         private void OnCounterClicked(object sender, EventArgs e)
         {
             count++;
@@ -19,6 +22,7 @@
                 CounterBtn.Text = $"Clicked {count} times";
 
             SemanticScreenReader.Announce(CounterBtn.Text);
+            
         }
     }
 

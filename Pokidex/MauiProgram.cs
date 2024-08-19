@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CommunityToolkit.Maui.Core;
+using FFImageLoading.Maui;
+using Microsoft.Extensions.Logging;
 
 namespace Pokidex
 {
@@ -9,6 +11,8 @@ namespace Pokidex
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseFFImageLoading()
+                .UseMauiCommunityToolkitCore()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
