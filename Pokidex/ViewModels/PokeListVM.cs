@@ -9,12 +9,15 @@ using CommunityToolkit.Maui.Core.Extensions;
 using CommunityToolkit.Mvvm.ComponentModel;
 using PokeApiNet;
 using AsyncAwaitBestPractices;
+using Pokidex.Models;
 
 namespace Pokidex.ViewModels
 {
     public class PokeListVM : ObservableObject
     {
         public ObservableCollection<Pokemon> AllPokemon { get; set; } = [];
+
+        public ObservableCollection<PokemonOverview> AllPokemonOverview { get; set; } = [];
 
         private PokeApiClient pokeClient;
 
@@ -35,8 +38,33 @@ namespace Pokidex.ViewModels
                     LoadPokes().SafeFireAndForget();
                 });
             */
-            LoadPokes();
+
+
+
+            //LoadPokes();
+            LoadSomeOverviews();
         }
+
+
+
+
+        async void LoadSomeOverviews()
+        {
+            var pokes = await pokeClient.GetNamedResourcePageAsync<Pokemon>(151,0);
+            for(var i = 0; i < pokes.Results.Count; i++)
+            {
+                var pokemon = pokes.Results[i];
+                var overview = new PokemonOverview();
+                overview.Name = pokemon.Name;
+                overview.Id = i + 1;
+                overview.Sprite = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + (i + 1) + ".png";
+                AllPokemonOverview.Add(overview);
+            }
+        }
+
+
+
+
 
         private async Task GetPokemonAtIndex(int index)
         {
