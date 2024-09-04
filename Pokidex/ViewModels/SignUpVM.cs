@@ -11,6 +11,7 @@ namespace Pokidex.ViewModels
 {
     public partial class SignUpVM : ObservableObject
     {
+
         [ObservableProperty]
         private string _email;
 
