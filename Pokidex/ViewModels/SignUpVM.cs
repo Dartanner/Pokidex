@@ -34,7 +34,7 @@ namespace Pokidex.ViewModels
         [RelayCommand]
         private async void LogIn()
         {
-            //await Shell.Current.GoToAsync("///LogIn");
+            await Shell.Current.GoToAsync("///LogIn");
         }
 
         [RelayCommand]
