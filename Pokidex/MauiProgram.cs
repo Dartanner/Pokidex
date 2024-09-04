@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui.Core;
 using FFImageLoading.Maui;
 using Microsoft.Extensions.Logging;
+using Pokidex.ViewModels;
 
 namespace Pokidex
 {

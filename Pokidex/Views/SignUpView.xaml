@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Pokidex.Views.SignUpView"
+             Title="SignUpView">
+    <Grid RowSpacing="20" ColumnSpacing="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Column="0" Grid.Row="1" HorizontalOptions="End" VerticalTextAlignment="Center" Text="Email:"/>
+        <Entry Grid.Column="1" Grid.Row="1" HorizontalOptions="Start" WidthRequest="200" Text="{Binding Email}"/>
+
+        <Label Grid.Column="0" Grid.Row="2" HorizontalOptions="End" VerticalTextAlignment="Center" Text="Password:" />
+        <Entry Grid.Column="1" Grid.Row="2" IsPassword="True" HorizontalOptions="Start" WidthRequest="200" Text="{Binding Password}"/>
+
+        <Label Grid.Column="0" Grid.Row="3" HorizontalOptions="End" VerticalTextAlignment="Center" Text="Confirm Password:" />
+        <Entry Grid.Column="1" Grid.Row="3" IsPassword="True" HorizontalOptions="Start" WidthRequest="200" Text="{Binding PasswordConfirm }"/>
+
+        <Button Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="4" HorizontalOptions="Center" WidthRequest="200" Text="Submit" Command="{Binding SignUpCommand }"/>
+        <Button Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="5" HorizontalOptions="Center" WidthRequest="200" Text="Log In" Command="{Binding LogInCommand }"/>
+
+        <Label Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2" TextColor="DarkRed" Text="{Binding ErrorMessage}"/>
+    </Grid>
+</ContentPage>

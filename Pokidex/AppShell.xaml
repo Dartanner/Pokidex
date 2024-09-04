@@ -9,6 +9,16 @@
     Title="Pokidex">
 
     <ShellContent
+        Title="Log In"
+        ContentTemplate="{DataTemplate views:LogInView}"
+        Route="LogIn" />
+
+    <ShellContent
+        Title="Sign Up"
+        ContentTemplate="{DataTemplate views:SignUpView}"
+        Route="SignUp" />
+
+    <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate views:PokemonList}"
         Route="PokemonList" />

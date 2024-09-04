@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Pokidex.Views.LogInView"
+             Shell.NavBarIsVisible="False"
+             Title="LogInView">
+    <Grid>
+        <!--BackgroundColor="Aqua"-->
+        <ScrollView VerticalOptions="Center" Orientation="Vertical" HorizontalOptions="Center" VerticalScrollBarVisibility="Never">
+            <VerticalStackLayout Spacing="20" HorizontalOptions="Center">
+                <HorizontalStackLayout>
+                    <Label WidthRequest="100" HorizontalOptions="End" VerticalTextAlignment="Center" Text="Email:"/>
+                    <Entry HorizontalOptions="Start" WidthRequest="200" Text="{Binding Email}"/>
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout>
+                    <Label WidthRequest="100" HorizontalOptions="End" VerticalTextAlignment="Center" Text="Password:" />
+                    <Entry IsPassword="True" HorizontalOptions="Start" WidthRequest="200" Text="{Binding Password}"/>
+                </HorizontalStackLayout>
+
+                <Button Text="Submit" HorizontalOptions="Center" WidthRequest="200" Command="{Binding LogInCommand }"/>
+
+                <Button Text="Sign up" HorizontalOptions="Center" WidthRequest="200" Command="{Binding SignUpCommand}"/>
+
+                <Label TextColor="DarkRed" Text="{Binding ErrorMessage}"/>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
