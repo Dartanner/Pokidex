@@ -4,9 +4,9 @@ namespace Pokidex.Views;
 
 public partial class PokemonList : ContentPage
 {
-	public PokemonList()
+	public PokemonList(PokeListVM vm)
 	{
 		InitializeComponent();
-        //this.BindingContext = new PokeListVM();
+        BindingContext = vm;
     }
 }

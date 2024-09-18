@@ -17,5 +17,8 @@ namespace Pokidex.Models
 
         [ObservableProperty] 
         private string sprite;
+
+        [ObservableProperty] 
+        private bool addedToTeam;
     }
 }

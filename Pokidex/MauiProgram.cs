@@ -2,6 +2,7 @@
 using FFImageLoading.Maui;
 using Microsoft.Extensions.Logging;
 using Pokidex.ViewModels;
+using Pokidex.Views;
 
 namespace Pokidex
 {
@@ -23,8 +24,16 @@ namespace Pokidex
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
-
+            builder.Services.AddDependencies();
+            
             return builder.Build();
+        }
+
+        public static void AddDependencies(this IServiceCollection services)
+        {
+            services.AddSingleton<PokeListVM>();
+
+            services.AddSingleton<PokemonList>();
         }
     }
 }

@@ -21,6 +21,6 @@
     <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate views:PokemonList}"
-        Route="PokemonList" />
+        Route="Home" />
 
 </Shell>

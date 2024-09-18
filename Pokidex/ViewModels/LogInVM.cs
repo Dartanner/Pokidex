@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Pokidex.Helpers;
+using Pokidex.Models.Database;
 
 namespace Pokidex.ViewModels
 {
@@ -27,9 +28,22 @@ namespace Pokidex.ViewModels
         {
             if (IsAuthenticated())
             {
+                using var pokemonDB = new PokidexDatabase();
+                if (pokemonDB.Users.Any(x =>
+                        x.Email.ToLower() == Email.ToLower() &&
+                        x.Password == Password))
+                {
+                    var user = pokemonDB.Users.Single(x => x.Email.ToLower() == Email.ToLower() && x.Password == Password);
 
+                    var teamId = user.TeamModelId;
+
+                    await Shell.Current.GoToAsync("///Home", new Dictionary<string, object>() { {"user", user }} );
+                }
+                else
+                {
+                    ErrorMessage = "Doesn't exist";
+                }
             }
-            //await Shell.Current.GoToAsync("///Home");
         }
 
         [RelayCommand]

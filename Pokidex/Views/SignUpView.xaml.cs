@@ -1,9 +1,14 @@
+using Pokidex.ViewModels;
+
 namespace Pokidex.Views;
 
 public partial class SignUpView : ContentPage
 {
 	public SignUpView()
-	{
-		InitializeComponent();
-	}
+    {
+        var vm = new SignUpVM();
+
+        InitializeComponent();
+        BindingContext = vm;
+    }
 }
