@@ -36,6 +36,8 @@ namespace Pokidex.ViewModels
                     var user = pokemonDB.Users.Single(x => x.Email.ToLower() == Email.ToLower() && x.Password == Password);
 
                     var teamId = user.TeamModelId;
+                    var team = pokemonDB.Teams.Single(x => x.Id == teamId);
+                    user.Team = team;
 
                     await Shell.Current.GoToAsync("///Home", new Dictionary<string, object>() { {"user", user }} );
                 }

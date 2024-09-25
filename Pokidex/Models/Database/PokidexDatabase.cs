@@ -18,7 +18,7 @@ namespace Pokidex.Models.Database
         {
             //set up the database name and location
             DbPath = Path.Combine(FileSystem.AppDataDirectory, "Pokidex.db");
-            Database.EnsureDeleted();
+            //Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 

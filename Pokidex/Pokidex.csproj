@@ -13,7 +13,9 @@
 		either BOTH runtimes must be indicated or ONLY macatalyst-x64. -->
 		<!-- For example: <RuntimeIdentifiers>maccatalyst-x64;maccatalyst-arm64</RuntimeIdentifiers> -->
 
-		<OutputType>Exe</OutputType>
+    <WindowsSdkPackageVersion>10.0.19041.41</WindowsSdkPackageVersion>
+
+    <OutputType>Exe</OutputType>
 		<RootNamespace>Pokidex</RootNamespace>
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>
@@ -57,8 +59,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\minus.png" />
+	  <None Remove="Resources\Images\plus.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="AsyncAwaitBestPractices" Version="8.0.0" />
 		<PackageReference Include="AsyncAwaitBestPractices.MVVM" Version="8.0.0" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="9.0.3" />
 		<PackageReference Include="CommunityToolkit.Maui.Core" Version="9.0.3" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.1" />
 		<PackageReference Include="FFImageLoading.Maui" Version="1.2.7" />

@@ -6,25 +6,33 @@
              xmlns:poke="clr-namespace:PokeApiNet;assembly=PokeApiNet"
              xmlns:vm="clr-namespace:Pokidex.ViewModels"
              xmlns:models="clr-namespace:Pokidex.Models"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              Title="Pokèdex">
 
     <ContentPage.BindingContext>
         <vm:PokeListVM/>
     </ContentPage.BindingContext>
 
-<ContentPage.Resources>
-    <converters:TypeToColourConverter x:Key="TypeToColour"/>
-</ContentPage.Resources>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:TypeToColourConverter x:Key="TypeToColour"/>
+            <x:String x:Key="truePlus">minus.png</x:String>
+            <x:String x:Key="falseMinus">plus.png</x:String>
+            <toolkit:BoolToObjectConverter x:Key="BoolToObjectConverter" TrueObject="{StaticResource truePlus}" FalseObject="{StaticResource falseMinus}"/>
+
+            <toolkit:VariableMultiValueConverter x:Key="multiCon" ConditionType="Any"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <!-- Container -->
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="120"/>
+            <!--<RowDefinition Height="120"/>-->
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <!-- Header -->
-        <Grid Grid.Row="0" Margin="20,0">
+        <!--<Grid Grid.Row="0" Margin="20,0">
             <VerticalStackLayout Margin="0" Spacing="10">
                 <Label>Search for a Pokèmon by name or using its Pokèdex number.</Label>
                 <HorizontalStackLayout Margin="0,0,100,20">
@@ -32,7 +40,7 @@
                     <Button Text="filter"/>
                 </HorizontalStackLayout>
             </VerticalStackLayout>
-        </Grid>
+        </Grid>-->
         <!-- list-->
         <Grid Grid.Row="1">
             <CollectionView FlowDirection="LeftToRight" ItemsSource="{Binding AllPokemonOverview}" ItemsLayout="VerticalGrid, 2" Margin="10,0"><!--  RemainingItemsThreshold="2" RemainingItemsThresholdReachedCommand="{Binding GetMorePokesCommand }">-->
@@ -53,7 +61,15 @@
                                     <Label HorizontalTextAlignment="Center" TextColor="Black" Text="{Binding Id, StringFormat='{}{0:D3}'}"/>
                                 </VerticalStackLayout>
                             </Grid>
-                            <Button VerticalOptions="Start" HorizontalOptions="End" Text="+" Margin="5" BackgroundColor="DeepSkyBlue" Command="{Binding Path=ToggleCommand, Source={RelativeSource AncestorType={x:Type vm:PokeListVM}}}"/>
+                            <Button VerticalOptions="Start" HorizontalOptions="End" ImageSource="{Binding AddedToTeam, Converter={StaticResource BoolToObjectConverter}}" Margin="5" WidthRequest="50" BackgroundColor="DeepSkyBlue" Command="{Binding Path=ToggleCommand, Source={RelativeSource AncestorType={x:Type vm:PokeListVM}}}" CommandParameter="{Binding .}">
+                                <Button.IsVisible>
+                                    <MultiBinding Converter="{StaticResource multiCon}">
+                                        <Binding Path="IsSpaceInTeam" Source="{RelativeSource AncestorType={x:Type vm:PokeListVM}}"/>
+                                        <Binding Path="AddedToTeam"/>
+
+                                    </MultiBinding>
+                                </Button.IsVisible>
+                            </Button>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
